@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChatBook</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: 'Papyrus', fantasy;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            transition-delay: 5s;
+            background-image: url('https://cdn.vectorstock.com/i/1000v/05/66/social-media-background-network-concept-vector-16150566.avif');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .logo {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo img {
+            max-width: 30%;
+            height: auto;
+            opacity: 0; /* Start invisible */
+            transform: translateY(-20px); /* Move slightly up */
+            animation: fadeInUp 0.8s forwards; /* Apply animation */
+            animation-delay: 0.3s; /* Delay before animation starts */
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1; /* End fully visible */
+                transform: translateY(0); /* Move back to original position */
+            }
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: rgba(240, 242, 245, 0.9);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            margin: 0 10px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            background-color: #4179e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: transform 0.5s;
+            margin-top: 10px;
+        }
+
+        .form-group button:hover {
+            background-color: green;
+            transform: scale(1.05);
+        }
+
+        .form-group a {
+            color: #4267B2;
+            text-decoration: none;
+            font-size: 14px;
+            margin-right: 18px;
+        }
+
+        .create-page {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo">
+        <img src="https://www.thespruce.com/thmb/xIWGvOa_7W58KO1YDoVOmiIgmYY=/fit-in/1500x750/filters:format(png):fill(white):max_bytes(150000):strip_icc()/Chatbooks-591e68490b4a4dc888d73a30213b68d4.jpg" alt="Chatbook Logo">
+    </div>
+
+    <h2>Chatbook helps you connect and share with the people in your life.</h2>
+
+    <div class="container">
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="email">USERNAME</label>
+                <input type="text" name="username" placeholder="Enter your username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">PASSWORD</label>
+                <input type="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" value="LOGIN">Log in</button>
+            </div>
+
+            <div class="form-group">
+                <a href="/openResetPassword">Forgot password?</a>
+                <a href="/openSignUp">Create new account</a>
+            </div>
+        </form>
+
+        <div class="create-page"></div>
+    </div>
+
+    <p><strong>Create a Page</strong> for a celebrity, brand or business.</p>
+</body>
+</html>

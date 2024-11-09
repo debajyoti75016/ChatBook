@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KodBook Sign up</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQghRRt_l9-j_2X5An9aShHWAyPNcIHp7EulA&s');
+            background-size: cover;
+            background-position: center;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Navbar Styling */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 14px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            transform: scale(1.1);
+            color: #4CAF50;
+        }
+
+        nav span {
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Header Styling */
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #fff;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #f4f4f9;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        /* Form Styling */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            margin-top: 12px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="file"],
+        input[type="radio"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="radio"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        }
+
+        /* Radio Button Styling */
+        .radio-group {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .radio-group label {
+            margin-right: 15px;
+            color: #555;
+        }
+
+        /* Styling for Submit Button */
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        /* File Input Styling */
+        input[type="file"] {
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav a {
+                margin-bottom: 8px;
+            }
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav>
+        <span th:text="${session.username}"></span>
+        <a href="/goHome"><i class="fas fa-home"></i> News feed</a>
+        <a href="/openCreatePost"><i class="fas fa-plus-circle"></i> Create post</a>
+        <a href="/openMyProfile"><i class="fas fa-user-circle"></i> My profile</a>
+        <a href="/logout"><i class="fas fa-sign-out-alt"></i> LOG OUT</a>
+    </nav>
+
+    <h1>KodBook</h1>
+    <h3>Update your profile!</h3>
+    <hr>
+
+    <!-- Profile Update Form -->
+    <form action="/updateProfile" method="post" enctype="multipart/form-data">
+        <!-- Date of Birth -->
+        <label for="dob">DOB:</label>
+        <input type="date" name="dob" id="dob">
+
+        <!-- Gender (Radio Buttons) -->
+        <label>Gender:</label>
+        <div class="radio-group">
+            <label for="gender-m">Male</label>
+            <input type="radio" name="gender" value="M" id="gender-m">
+            <label for="gender-f">Female</label>
+            <input type="radio" name="gender" value="F" id="gender-f">
+            <label for="gender-o">Other</label>
+            <input type="radio" name="gender" value="O" id="gender-o">
+        </div>
+
+        <!-- City -->
+        <label for="city">City:</label>
+        <input type="text" name="city" id="city" placeholder="Enter city name">
+
+        <!-- Bio -->
+        <label for="bio">Bio:</label>
+        <input type="text" name="bio" id="bio" placeholder="Enter Bio">
+
+        <!-- College -->
+        <label for="college">College:</label>
+        <input type="text" name="college" id="college" placeholder="Enter College name">
+
+        <!-- LinkedIn -->
+        <label for="linkedIn">LinkedIn:</label>
+        <input type="text" name="linkedIn" id="linkedIn" placeholder="Enter linkedIn Profile">
+
+        <!-- GitHub -->
+        <label for="gitHub">GitHub:</label>
+        <input type="text" name="gitHub" id="gitHub" placeholder="Enter gitHub profile">
+
+        <!-- Profile Picture -->
+        <label for="profilePic">Profile Picture:</label>
+        <input type="file" name="profilePic" id="profilePic" accept="image/*">
+
+        <!-- Submit Button -->
+        <input type="submit" value="Update Profile">
+    </form>
+</body>
+</html>
